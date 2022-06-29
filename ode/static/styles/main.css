@@ -1,0 +1,248 @@
+body{
+  background-color: rgb(242, 242, 242);
+  font-family: 'Rubik', sans-serif;
+  height: 95%;
+}
+
+
+header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 30px 10%;
+}
+
+
+
+.dark-mode {
+background-color: black;
+color: white;
+}
+
+.login {
+transform-style: preserve-3d;
+background: #fff;
+width: 500px;
+height: 100%;
+margin: 65px auto;
+margin-top: 15%;
+display: -webkit-box;
+display: flex;
+justify-content: center;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+        flex-direction: column;
+border-radius: 4px;
+box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+.circlebig {
+border-radius: 50%;
+position: fixed;
+transform: translateZ(-10px);
+background: rgb(255,190,65);
+background: linear-gradient(90deg, rgba(255,190,65,1) 0%, rgba(209,49,203,1) 100%);
+width: 1000px;
+height: 1000px;
+margin-top: -35%;
+margin-left: 60%;
+}
+.circlesmall {
+border-radius: 50%;
+position: fixed;
+transform: translateZ(-10px);
+background: rgb(255,190,65);
+background: linear-gradient(90deg, #41ffdd 0%, #8b0086 100%);
+width: 500px;
+height: 500px;
+margin-top: 25%;
+margin-left: -5%;
+}
+.login ul.messages{
+background-color: #fff;
+}
+.login h1 {
+  padding: 25px 0px 0px 0px;
+  font-weight: 3000;
+  text-align: center;
+  text-decoration: none;
+  color: #747474;
+}
+
+.login .content {
+  margin: 35px;
+  text-align: center;
+}
+.login .input input {
+  font-size: 16px;
+  display: block;
+  font-family: 'Rubik', sans-serif;
+  width: 100%;
+  padding: 10px 1px;
+  border: 0;
+  border-bottom: 1px solid #747474;
+  margin-bottom: 20px;
+  outline: none;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+.login a.link {
+  text-decoration: none;
+  color: #747474;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.login .input input::-webkit-input-placeholder {
+  text-transform: uppercase;
+}
+.login .input input::-moz-placeholder {
+  text-transform: uppercase;
+}
+.login .input input:-ms-input-placeholder {
+  text-transform: uppercase;
+}
+.login .input input::-ms-input-placeholder {
+  text-transform: uppercase;
+}
+.login .input input::placeholder {
+  text-transform: uppercase;
+}
+.login .input-field input:focus {
+  border-color: #222;
+}
+.login .action {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+.login .action button {
+  width: 100%;
+  border: none;
+  padding: 18px;
+  font-family: 'Rubik', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  background: #e8e9ec;
+  color: #777;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  letter-spacing: 0.2px;
+  outline: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.login .action button:hover {
+  background: #d8d8d8;
+}
+.login .action button:nth-child(2) {
+  background: #FA154C;
+  color: #fff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 4px;
+}
+.login .action button:nth-child(2):hover {
+  background: #FC4E81;
+}
+.login .action .register button{
+  width: 500px;
+  justify-content: center;
+  border: none;
+  padding: 18px;
+  font-family: 'Rubik', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  outline: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background: #FA154C;
+  color: #fff;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+}
+.login .action .register button:hover {
+  background: #FC4E81;
+}
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+-webkit-animation-name: fadeIn; /* Fade in the background */
+-webkit-animation-duration: 0.4s;
+animation-name: fadeIn;
+animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+position: fixed;
+bottom: 0;
+background-color: #fefefe;
+width: 100%;
+-webkit-animation-name: slideIn;
+-webkit-animation-duration: 0.4s;
+animation-name: slideIn;
+animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+color: white;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}
+
+.modal-header {
+padding: 2px 16px;
+background-color: #5cb85c;
+color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+padding: 2px 16px;
+background-color: #5cb85c;
+color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+from {bottom: -300px; opacity: 0} 
+to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+from {bottom: -300px; opacity: 0}
+to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+from {opacity: 0} 
+to {opacity: 1}
+}
+
+@keyframes fadeIn {
+from {opacity: 0} 
+to {opacity: 1}
+}

@@ -1,0 +1,291 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    nav{
+        transform-style: preserve-3d;
+        height: 80px;
+        width: 100%;
+    }
+    label.logo{
+        color: aliceblue;
+        font-size: 35px;
+        line-height: 80px;
+    }
+    nav ul{
+        float: right;
+        margin-right: 40px;
+    }
+    nav ul li{
+        display: inline-block;
+        line-height: 80px;
+        font-size: 35px;
+    }
+    nav ul li a{
+        color:black;
+        font-weight: bold;
+    }
+    
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+    
+    .dropbtn {
+      /* cursor: pointer;
+      border: 3px;
+      border-style: solid;;
+      border-color: purple;
+      width: 100px;
+      margin-left: 8px;
+      border-radius: 20px;
+      color: black;
+      font-size: 35px;
+      line-height: 60px; */
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: rgb(242, 242, 242);
+      color: black;
+      padding: 12px 40px;
+      font-size: 35px;
+      margin-left: 8px;
+      margin-top: 8px;
+      cursor: pointer;
+      border-color: #D93067;
+      color: #D93067;
+    }
+    .dropbtn-dark {
+      /* cursor: pointer;
+      border: 3px;
+      border-style: solid;;
+      border-color: purple;
+      width: 100px;
+      margin-left: 8px;
+      border-radius: 20px;
+      color: black;
+      font-size: 35px;
+      line-height: 60px; */
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: #6B6D87;
+      color: black;
+      padding: 12px 40px;
+      font-size: 35px;
+      margin-left: 8px;
+      margin-top: 8px;
+      cursor: pointer;
+      border-color: #D93067;
+      color: #D93067;
+    }
+    .dropbtn:hover {
+      background-color: #D93067;
+      color: white;
+    }
+    
+    .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+      background-color: rgb(242, 242, 242);
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      margin-left: 8px;
+    }
+    
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+    
+    .show {
+      display: block;
+    }
+</style>
+<body>
+    
+    {% if page == 'login' %}
+    <div class="circlebig"></div>
+    <body>
+        <nav>
+            <button class="dropbtn" onclick="drFunction()">Language
+            <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="myDropdown">
+                <a href="{% url 'login_pl' %}"id="updateDetails">Polish</a>
+            </div>
+            <ul>
+                <li><a onclick="myFunction()" href="#">Change mode</a></li>
+            </ul>
+        </nav>
+    </body>
+    <div class="circlesmall"></div>
+    <div class="login" id="log">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h1 id="loghead">Login</h1>
+            <div class="content">
+                <div class="input">
+                    <input type="login" name=username placeholder="Username" autocomplete="nope" onkeypress="return event.keyCode!=13" required/>
+                </div>
+                <div class="input">
+                    <input id="pass" type="password" name=password placeholder="Password" autocomplete="new-password" required/>
+                </div>
+                <a href="{% url 'register' %}" class="link">Forgot Your Password?</a>
+            </div>
+            <div class="action">
+                <button id="register">Register</button>
+                <button id="sign" type='submit'>Sign in</button>
+            </div>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <script>
+        document.getElementById("register").addEventListener('click', function() {
+        event.preventDefault();
+        window.location.href = '/register'
+        });
+        
+        var input = document.getElementById("pass");
+        input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("sign").click();
+            }
+        });
+
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+            var element = document.getElementById("log");
+            element.classList.toggle("login-dark");
+            var element = document.getElementById("log");
+            element.classList.toggle("login-dark");
+            // var element = document.getElementById("loghead");
+            // element.classList.toggle("dark-mode");
+        }
+        function drFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+    </script>
+
+    {% else %}
+
+    <div class="circlebig"></div>
+    <div class="circlesmall"></div>
+    <div class="login">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h1>Register</h1>
+            <div class="content">
+                <div class="input">
+                    {{form.username}}
+                </div>
+                <div class="input">
+                    {{form.password1}}
+                </div>
+                <div class="input">
+                    {{form.password2}}
+                </div>
+                <a href="{% url 'login' %}" class="link">You already have an account?</a>
+            </div>
+            <div class="action">
+                <div class="register">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder="Username"
+        form_fields[2].placeholder="Password"
+        form_fields[3].placeholder="Confirm password"
+        console.log(messeges)
+        for (var field in form_fields){
+            form_fields[field].className += ' form-control'
+        }
+    </script>
+    {% endif %}
+    <!-- {% if page == 'login' %}
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Enter username" />
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter password" />
+            <input type="submit" value="Login"/>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p>Havent signed yet?</p>
+        <a href="{% url 'register' %}">Sign up</a>
+    </div>
+    {% else %}
+    <div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Register"/>
+        </form>
+        <p>Already signed up?</p>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+    {% endif %}s
+</body> -->
+    
+{% endblock content %}

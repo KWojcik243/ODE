@@ -1,0 +1,479 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+nav{
+    transform-style: preserve-3d;
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: aliceblue;
+    font-size: 35px;
+    line-height: 80px;
+}
+nav ul{
+    float: right;
+    margin-right: 40px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    font-size: 35px;
+}
+nav ul li a{
+    color:black;
+    font-weight: bold;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropbtn {
+  /* cursor: pointer;
+  border: 3px;
+  border-style: solid;;
+  border-color: purple;
+  width: 100px;
+  margin-left: 8px;
+  border-radius: 20px;
+  color: black;
+  font-size: 35px;
+  line-height: 60px; */
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(242, 242, 242);
+  color: black;
+  padding: 8px 32px;
+  font-size: 35px;
+  margin-left: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-color: #D93067;
+  color: #D93067;
+}
+.dropbtn:hover {
+  background-color: #D93067;
+  color: white;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: rgb(242, 242, 242);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: 8px;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+dialog#favDialog{
+  border: 1px solid black;
+  transform-style: preserve-3d;
+  background: #fff;
+  width: 500px;
+  height: 20%;
+  margin: 65px auto;
+  margin-top: 15%;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  border-radius: 4px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+.btn-group button {
+  background-color: #04AA6D; /* Green background */
+  border: 0px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+  /* border: 1px solid green; Green border */
+  color: white; /* White text */
+  padding: 17px 30px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  position: relative;
+  
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+.btn-group2 button {
+  background-color: #04AA6D; /* Green background */
+  border: 0px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+  /* border: 1px solid green; Green border */
+  color: white; /* White text */
+  padding: 8px 15px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  position: relative;
+  
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group2:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group2 button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group2 button:hover {
+  background-color: #3e8e41;
+}
+
+.class_box1{
+  background-color: rgb(242, 242, 242);
+  margin-top: 3%;
+  margin-left: 3%;
+  width: 850px;
+  height: 720px;
+  position: absolute;
+  opacity: 0.8;
+  border-radius: 4px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+.class_box2{
+  background-color: rgb(242, 242, 242);
+  margin-top: 3%;
+  margin-left: 52%;
+  width: 850px;
+  height: 720px;
+  position: absolute;
+  opacity: 0.8;
+  border-radius: 4px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+.nap_clas{
+  margin-top: 2%;
+  margin-left: 25%;
+  font-size: 40px;
+  color: #BD8211;
+}
+
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+.button_plus {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  cursor: pointer;
+  border: 2px solid orange;
+
+  /* Mittig */
+  top: 10%;
+  left: 5%;
+}
+
+.button_plus:after {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 4px;
+  width: 50%;
+  background: orange;
+  top: 50%;
+  left: 50%;
+}
+
+.button_plus:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: orange;
+  height: 50%;
+  width: 4px;
+}
+
+.button_plus:hover:before,
+.button_plus:hover:after {
+  background: #fff;
+  transition: 0.2s;
+}
+
+.button_plus:hover {
+  background-color: orange;
+  transition: 0.2s;
+}
+
+
+.button_minus {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  cursor: pointer;
+  border: 2px solid red;
+
+  /* Mittig */
+  top: 20%;
+  left: 5%;
+}
+
+.button_minus:after {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 4px;
+  width: 50%;
+  background: red;
+  top: 50%;
+  left: 50%;
+}
+
+.button_minus:hover:before,
+.button_minus:hover:after {
+  background: #fff;
+  transition: 0.2s;
+}
+
+.button_minus:hover {
+  background-color: red;
+  transition: 0.2s;
+}
+
+</style>
+
+<div style="margin-top: -20%;" class="circlebig"></div>
+<div style="margin-top: 40%;"class="circlesmall"></div>
+<body>
+    <nav>
+        <button class="dropbtn" onclick="myFunction()">File
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+            <a href="#"id="updateDetails">New file</a>
+           <a href="#">Open</a>
+           <a href="#">Import</a>
+        </div>
+        <button class="dropbtn" onclick="drFunction()">Language
+          <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content" id="myDropdown">
+              <a href="{% url 'login' %}"id="updateDetails">Angielski</a>
+          </div>
+          <ul>
+            <li><a style="margin-right: 40px;" href="#">Hi, {{request.user}}!</a></li>
+            <li><a  style="margin-right: 40px;"onclick="myFunction()" href="#">Change mode</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+    </nav>
+</body>
+<dialog id="favDialog" >
+  <form method="dialog">
+    <form method="POST" action="/open_file_req">
+      {% csrf_token %}
+      <p>Enter name</p>
+      <input method="dialog" placeholder="File name" name="file_name" >
+        <div>
+          <button value="cancel">Cancel</button>
+          <button id="confirmBtn" value="default">Confirm</button type='submit'>
+        </div>
+    </form>
+  </form>
+</dialog>
+<div class="btn-group" style="margin-left: 35%;">
+  <button style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;background-color: #FFDB79;">Classes</button>
+  <button style="background-color: #8042B2;">Instances</button>
+  <button style="background-color: #295EB3;">Object properties</button>
+  <button style="border-top-right-radius: 10px;border-bottom-right-radius: 10px; background-color: #57C10A;">Data properties</button>
+</div>
+<div class="class_box1">
+  <p class="nap_clas">Class hierarchy</p>
+  <div class="btn-group2" style="margin-left: 5%; margin-top: 2%;">
+    <button style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;background-color: orange;">Add SubClass</button>
+    <button style="background-color: #295EB3;">Add SiblingClass</button>
+    <button style="border-top-right-radius: 10px;border-bottom-right-radius: 10px; background-color: red;">Delete Class</button>
+  </div>
+  <ul id="myUL">
+    <li style="margin-left: 5%;margin-top: 2%;"><span class="caret">Beverages</span>
+      <ul style="margin-left: 4%;"class="nested">
+        <li>Water</li>
+        <li><span class="caret">Coffee</span>
+          <ul style="margin-left: 6%;" class="nested">
+            <li>Black Coffee</li>
+            <li>White Coffee</li>
+          </ul>
+        <li><span class="caret">Tea</span>
+          <ul style="margin-left: 6%;" class="nested">
+            <li>Black Tea</li>
+            <li>White Tea</li>
+            <li><span class="caret">Green Tea</span>
+              <ul style="margin-left: 7%;" class="nested">
+                <li>Sencha</li>
+                <li>Gyokuro</li>
+                <li>Matcha</li>
+                <li>Pi Lo Chun</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="class_box2">
+  <p class="nap_clas">Class description: Water</p>
+  <p style="margin-top: 3%; margin-left: 5%; font-weight: bold;">Equivalent to <div class="button_plus" style="margin-left: 13%; margin-top: 1.5%;"></div>
+  </p>
+  <p style="margin-top: 3%; margin-left: 5%; font-weight: bold;">SubClass of<div class="button_plus" style="margin-left: 13%; margin-top: 6.5%;"></div>
+    <ul style="margin-top: 2%; margin-left: 7%;">
+      <li style="margin-top: 5px;">Beverages<div class="button_minus" style="margin-left: 12%; margin-top: 1.5%; top: 21%;"></div></li>
+    </ul>
+  </p>
+  <p style="margin-top: 3%; margin-left: 5%; font-weight: bold;">Instances<div class="button_plus" style="margin-left: 13%; margin-top: 15.7%;"></div>
+  </p>
+</div>
+<script>
+var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+  toggler[i].addEventListener("click", function() {
+    this.parentElement.querySelector(".nested").classList.toggle("active");
+    this.classList.toggle("caret-down");
+  });
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+    }
+    }
+}
+
+const updateButton = document.getElementById('updateDetails');
+const favDialog = document.getElementById('favDialog');
+const outputBox = document.querySelector('output');
+const selectEl = favDialog.querySelector('select');
+const confirmBtn = favDialog.querySelector('#confirmBtn');
+
+// If a browser doesn't support the dialog, then hide the
+// dialog contents by default.
+if ( typeof favDialog.showModal !== 'function' ) {
+  favDialog.hidden = true;
+  /* a fallback script to allow this dialog/form to function
+     for legacy browsers that do not support <dialog>
+     could be provided here.
+  */
+}
+// "Update details" button opens the <dialog> modally
+updateButton.addEventListener('click', function onOpen() {
+  if (typeof favDialog.showModal === "function") {
+    favDialog.showModal();
+  } else {
+    outputBox.value = "Sorry, the <dialog> API is not supported by this browser.";
+  }
+});
+
+// "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
+// favDialog.addEventListener('close', function onClose() {
+//   console.log("Hejka");
+//   window.location.href = '/open_file_req'
+// });
+</script>
+
+{% endblock content %}
