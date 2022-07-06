@@ -1,15 +1,7 @@
-from distutils.log import error
-import imp
-from multiprocessing import context
-import re
-# from .onto.ontology import OwnOntology
-
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import CreateUserForm
 
@@ -50,15 +42,6 @@ def registerPage(request):
             login(request, user)
             return redirect('home')
         else:
-            # for i in range(dict(form.errors).get('username')):
-            #     dict(form.errors).get('username')
-            # errors = str(dict(form.errors).get('username')) + str(dict(form.errors).get('password1')) + str(dict(form.errors).get('password2'))
-            # errors = errors.replace('<ul class="errorlist">', '')
-            # errors = errors.replace('</li></ul>', '<br>')
-            # errors = errors.replace('</li><li>', '<br>')
-            # errors = errors.replace('None<li>', '')
-            # errors = errors.replace('<li>', '')
-            # print(dict(form.errors).get('password'))
             messages.error(request, form.errors)
     return render(request, 'base/login.html',{'form':form})
 
@@ -88,12 +71,3 @@ def loginPagePl(request):
             messages.error(request, 'Username or password does not exist')
     context = {'page':page}
     return render(request, 'base/login_pl.html', context=context)
-
-# def open_file_req(request):
-    
-#     onto = OwnOntology("onto",onto)
-#     return render(request, 'base/home.html')
-#     # onto = OwnOntology("onto",onto)
-#     # onto = get_ontology("file://D:\\Programowanie\\Programy\\Uczelnia\\Licencjat\\Projekt_Ontologyu_ODE\\Licencjat\\Application\\Backend\\onto").load()
-
-

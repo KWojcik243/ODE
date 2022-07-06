@@ -6,7 +6,7 @@ from django.http.response import HttpResponse
 from owlready2 import *
 
 
-class UserFile:
+class OntologyFile:
     def __init__(self, file_name, ontology):
         self.name = file_name
         self.ontology = ontology
