@@ -1,15 +1,10 @@
-from file import UserFile
+from file import Ontology
 from owlready2 import *
 import types
 
 
-# TODOO
-# usunięcie wszystkich podklass
-# delete_inverse_object_property nie działa
-# data range nie działa
-
 class ClassMan:
-    def __init__(self, file: UserFile):
+    def __init__(self, file: Ontology):
         self.file = file
 
     def create_subclass(self, subclass_name, main_class):
@@ -58,7 +53,7 @@ class ClassMan:
 
 
 class InstancesMan:
-    def __init__(self, file: UserFile):
+    def __init__(self, file: Ontology):
         self.file = file
 
     def add_instance(self, which_class, name):
@@ -92,7 +87,7 @@ class InstancesMan:
 
 
 class ObjectPropertyMan:
-    def __init__(self, file: UserFile):
+    def __init__(self, file: Ontology):
         self.file = file
 
     def create_object_sub_property(self, name, main_object_property):
@@ -167,7 +162,7 @@ class ObjectPropertyMan:
 
 
 class DataPropertyMan:
-    def __init__(self, file: UserFile):
+    def __init__(self, file: Ontology):
         self.file = file
 
     def create_data_sub_property(self, name, main_data_property):
